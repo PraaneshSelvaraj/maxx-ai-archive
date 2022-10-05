@@ -1,0 +1,184 @@
+{
+   "songs_path": "D:\\Songs\\",
+   "quick_connect": "enabled",
+   "service_default": "website",
+   "accent": "ca",
+   "defaults": {
+      "text_editor": "notepad",
+      "voice_engine": "gTTS",
+      "media_player": {
+         "name": "vlc",
+         "cmd": "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe"
+      },
+      "maps": {
+         "name": "Google maps",
+         "search_url": "https://www.google.com/maps/place/"
+      }
+   },
+   "accent_list": [
+      {
+         "name": "australian",
+         "alias": [
+            "australian",
+            "austraila"
+         ],
+         "tld": "com.au"
+      },
+      {
+         "name": "unitedkingdom",
+         "alias": [
+            "unitedkingdom,uk"
+         ],
+         "tld": "com.uk"
+      },
+      {
+         "name": "canadian",
+         "alias": [
+            "canadian",
+            "canada"
+         ],
+         "tld": "ca"
+      },
+      {
+         "name": "indian",
+         "alias": [
+            "indian",
+            "india"
+         ],
+         "tld": "co.in"
+      },
+      {
+         "name": "ireland",
+         "alias": [
+            "ireland"
+         ],
+         "tld": "ie"
+      }
+   ],
+
+   "services": [
+      {
+         "name": "google",
+         "type": "website",
+         "alias": [
+            "google"
+         ],
+         "url": "https://google.com/",
+         "search_url": "https://www.google.com/search?q=",
+         "app": "none"
+      },
+      {
+         "name": "youtube",
+         "type": "website",
+         "alias": [
+            "youtube",
+            "yt"
+         ],
+         "url": "https://www.youtube.com/",
+         "search_url": "https://www.youtube.com/results?search_query=",
+         "app": "none"
+      },
+      {
+         "name": "amazon",
+         "type": "hybrid",
+         "alias": [
+            "amazon"
+         ],
+         "url": "https://www.amazon.com/",
+         "search_url": "https://www.amazon.com/s?k=",
+         "app": "none"
+      },
+      {
+         "name": "facebook",
+         "type": "website",
+         "alias": [
+            "facebook",
+            "fb"
+         ],
+         "url": "https://www.facebook.com/",
+         "search_url": "https://www.facebook.com/search/top?q=",
+         "app": "none"
+      },
+      {
+         "name": "yahoo",
+         "type": "website",
+         "alias": [
+            "yahoo"
+         ],
+         "url": "https://yahoo.com/",
+         "search_url": "https://search.yahoo.com/search?p=",
+         "app": "none"
+      },
+      {
+         "name": "flipkart",
+         "type": "website",
+         "alias": [
+            "flipkart"
+         ],
+         "url": "https://www.flipkart.com/",
+         "search_url": "https://www.flipkart.com/search?q=",
+         "app": "none"
+      },
+      {
+         "name": "twitch",
+         "type": "website",
+         "alias": [
+            "twitch"
+         ],
+         "url": "https://www.twitch.tv/",
+         "search_url": "https://www.twitch.tv/search?term=",
+         "app": "none"
+      },
+      {
+         "name": "steam",
+         "type": "hybrid",
+         "alias": [
+            "steam"
+         ],
+         "url": "https://store.steampowered.com/",
+         "search_url": "https://store.steampowered.com/search/?term=",
+         "app": "none"
+      },
+      {
+         "name": "notepad",
+         "type": "app",
+         "alias": [
+            "notepad",
+            "notes"
+         ],
+         "url":"none",
+         "search_url":"none",
+         "app": "NOTEPAD"
+      },
+      {
+         "name":"paint",
+         "type":"app",
+         "alias":["paint",
+         "ms paint",
+         "microsoft paint"],
+         "url":"none",
+         "search_url":"none",
+         "app":"mspaint"
+      },
+      {
+         "name":"wordpad",
+         "type":"app",
+         "alias":[
+            "wordpad"
+         ],
+         "url":"none",
+         "search_url":"none",
+         "app":"write.exe"
+      },
+      {
+         "name":"Calculator",
+         "type":"app",
+         "alias":[
+            "calculator"
+         ],
+         "url":"none",
+         "search_url":"none",
+         "app":"calc.exe"
+      }
+   ]
+}

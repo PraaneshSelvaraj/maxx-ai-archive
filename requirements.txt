@@ -1,0 +1,15 @@
+gTTS
+SpeechRecognition
+playsound==1.2.2
+pynput 
+wolframalpha 
+pyscreenshot
+prompt_toolkit
+pyaudio
+wikipedia
+pyautogui
+pyperclip
+psutil
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
