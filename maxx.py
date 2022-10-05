@@ -644,6 +644,9 @@ class SystemTrayApp(QtWidgets.QSystemTrayIcon):
         awake_opt.setIcon(QtGui.QIcon("assets/images/icon.png"))
         menu.addSeparator()
 
+        exit_opt = menu.addAction("Exit")
+        exit_opt.triggered.connect(lambda: sys.exit())
+
         self.setContextMenu(menu)
         self.activated.connect(self.OnTrayIconActivated)
 
