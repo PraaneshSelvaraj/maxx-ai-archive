@@ -7,7 +7,6 @@ import os
 import socket
 import pickle
 from playsound import playsound
-from pynput import keyboard
 import random
 import speech_recognition as sr
 import get_wit
@@ -17,6 +16,8 @@ from includes import google_con
 import json
 import wolframalpha
 import pyttsx3
+import sys
+from PySide2 import QtWidgets, QtGui
 engine = pyttsx3.init()
 
 
@@ -33,12 +34,6 @@ buffer = 1024
 accent = user_config['accent']
 
 song_loaded = skills.load_songs()
-
-virt_keyboard = keyboard.Controller()
-COMBINATIONS = [
-    {keyboard.Key.ctrl_r, keyboard.Key.up,},
-]
-current = set()
 
 wit_access_token = keys.wit_access_token
 wolfram_app = wolframalpha.Client(keys.wolframalpha_app_id)
@@ -101,7 +96,7 @@ def get_audio():
         print("processing audio..")
 
         try:
-            said = r.recognize_google(audio,language="en-IN")
+            said = r.recognize_google(audio)
             said = said.lower()
             config.is_Exception = False
             print(said)
@@ -622,7 +617,6 @@ def assistant(query):
                     speak(f" {event['summary']} at {hour}:{min} {hf}")
                 i+=1
             
-
 def awake():
     if config.in_use:
         return
@@ -638,18 +632,29 @@ def awake():
         config.in_use = False
         return
 
-def on_press(key):
-    if any([key in COMBO for COMBO in COMBINATIONS]):
-        current.add(key)
-        if any(all(k in current for k in COMBO) for COMBO in COMBINATIONS):
-            current.clear()
+#Creating System Tray Icon
+class SystemTrayApp(QtWidgets.QSystemTrayIcon):
+    def __init__(self,icon,parent):
+        QtWidgets.QSystemTrayIcon.__init__(self,icon,parent)
+        self.setToolTip("Maxx-AI")
+        menu=QtWidgets.QMenu(parent)
+
+        awake_opt = menu.addAction("Awake")
+        awake_opt.triggered.connect(awake)
+        awake_opt.setIcon(QtGui.QIcon("assets/images/icon.png"))
+        menu.addSeparator()
+
+        self.setContextMenu(menu)
+        self.activated.connect(self.OnTrayIconActivated)
+
+
+    def OnTrayIconActivated(self, reason):
+        if reason==self.Trigger:
             awake()
-
-def on_release(key):
-    if any([key in COMBO for COMBO in COMBINATIONS]):
-        try:
-            current.remove(key)
-        except: print("on_release error!")
-
-with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
-    listener.join()
+  
+if __name__ == "__main__":
+    app=QtWidgets.QApplication(sys.argv)
+    w=QtWidgets.QWidget()
+    tray_icon=SystemTrayApp(QtGui.QIcon("assets/images/icon.png"),w)
+    tray_icon.show()
+    sys.exit(app.exec_())
