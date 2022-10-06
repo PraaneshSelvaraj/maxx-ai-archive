@@ -74,7 +74,7 @@ def speak(txt):
             sleep(0.5)
             print(txt)
             playsound("output.mp3")
-            os.system("del output.mp3")
+            os.remove("output.mp3")
 
     except Exception as e:
         print("speak exception: {}".format(e))
