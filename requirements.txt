@@ -1,7 +1,6 @@
 gTTS
 SpeechRecognition
 playsound==1.2.2
-pynput 
 wolframalpha 
 pyscreenshot
 prompt_toolkit
@@ -15,3 +14,7 @@ google-auth-httplib2
 google-auth-oauthlib
 PyQt5
 PySide2
+pywin32
+prompt_toolkit
+pyttsx3
+pillow
