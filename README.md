@@ -10,7 +10,7 @@ The simplest way to install Maxx-AI is to clone the maxx-ai repo to your system 
 ```
 git clone https://github.com/PraaneshSelvaraj/maxx-ai.git
 cd maxx-ai/
-pip install -r requirements.txt
+python setup.py
 pythonw maxx.pyw
 ```
     
