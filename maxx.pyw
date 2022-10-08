@@ -616,6 +616,10 @@ def assistant(query):
                 else:
                     speak(f" {event['summary']} at {hour}:{min} {hf}")
                 i+=1
+    
+    elif intent == "support":
+        speak("Opening users support.")
+        webbrowser.open("https://groups.google.com/g/maxx-ai-users-support")
             
 def awake():
     if config.in_use:
