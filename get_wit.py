@@ -86,3 +86,9 @@ def get_accent(res):
         return res['entities']['accent:accent'][0]['value']
     except:
         return None
+
+def get_speak(res):
+    try:
+        return res['entities']['speak:speak'][0]['value']
+    except:
+        return None
