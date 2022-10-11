@@ -2,10 +2,32 @@ import os
 from subprocess import call
 from time import sleep
 import json
-from maxx import speak
+import requests
+from includes import keys
+import winsound
 call(["pip","install","wit","playsound==1.2.2"])
 
 from playsound import playsound
+
+def speak(txt):
+    audio= requests.post(
+    'https://api.wit.ai/synthesize',
+    params={
+        'v': '20220622',
+    },
+    headers={
+        'Authorization': 'Bearer {}'.format(keys.wit_access_token),
+    },
+    json={ 'q': txt, 'voice': 'Charlie' },
+    )
+
+    with open("output.wav","wb") as f:
+        f.writelines(audio)
+    f.close()
+    
+    print(txt)
+    winsound.PlaySound("output.wav", winsound.SND_FILENAME)
+    os.remove("output.wav")
 
 speak("Hi, I am Maxx.")
 speak("People say that I am an A.I, But I am your bestfriend.")
@@ -13,7 +35,7 @@ speak("I am going to move in and live with you.")
 speak("Let me pack up my things from my home server and shift them to your system.")
 
 packages =["SpeechRecognition","wolframalpha","pyscreenshot","prompt_toolkit","pyaudio","wikipedia","psutil", "pyttsx3",
-           "google-api-python-client","google-auth-httplib2","google-auth-oauthlib","PyQt5","PySide2","pywin32","pillow","gTTS"]
+           "google-api-python-client","google-auth-httplib2","google-auth-oauthlib","PyQt5","pywin32","pillow","gTTS"]
 
 for package in packages:
     call(["pip","install",package])
