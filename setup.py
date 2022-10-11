@@ -34,7 +34,7 @@ speak("People say that I am an A.I, But I am your bestfriend.")
 speak("I am going to move in and live with you.")
 speak("Let me pack up my things from my home server and shift them to your system.")
 
-packages =["SpeechRecognition","wolframalpha","pyscreenshot","prompt_toolkit","pyaudio","wikipedia","psutil", "pyttsx3",
+packages =["tk","SpeechRecognition","wolframalpha","pyscreenshot","prompt_toolkit","pyaudio","wikipedia","psutil", "pyttsx3",
            "google-api-python-client","google-auth-httplib2","google-auth-oauthlib","PyQt5","pywin32","pillow","gTTS"]
 
 for package in packages:
