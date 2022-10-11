@@ -19,6 +19,7 @@ import pyttsx3
 import sys
 from PySide2 import QtWidgets, QtGui
 import requests
+import winsound
 engine = pyttsx3.init()
 
 
@@ -95,7 +96,7 @@ def speak(txt):
             f.close()
             
             print(txt)
-            playsound("output.wav")
+            winsound.PlaySound("output.wav", winsound.SND_FILENAME)
             os.remove("output.wav")
 
     except Exception as e:
