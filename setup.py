@@ -2,19 +2,10 @@ import os
 from subprocess import call
 from time import sleep
 import json
+from maxx import speak
+call(["pip","install","wit","playsound==1.2.2"])
 
-call(["pip","install","gTTS","playsound==1.2.2"])
-
-from gtts import gTTS
 from playsound import playsound
-
-def speak(txt):
-    tts=gTTS(txt,lang='en',tld='ca')
-    tts.save('output.mp3')
-    sleep(0.5)
-    print(txt)
-    playsound("output.mp3")
-    os.remove("output.mp3")
 
 speak("Hi, I am Maxx.")
 speak("People say that I am an A.I, But I am your bestfriend.")
@@ -22,14 +13,13 @@ speak("I am going to move in and live with you.")
 speak("Let me pack up my things from my home server and shift them to your system.")
 
 packages =["SpeechRecognition","wolframalpha","pyscreenshot","prompt_toolkit","pyaudio","wikipedia","psutil", "pyttsx3",
-           "google-api-python-client","google-auth-httplib2","google-auth-oauthlib","PyQt5","PySide2","pywin32","pillow","wit"]
+           "google-api-python-client","google-auth-httplib2","google-auth-oauthlib","PyQt5","PySide2","pywin32","pillow","gTTS"]
 
 for package in packages:
     call(["pip","install",package])
 
 speak("I've just moved in to your system.")
 speak("Let's have a party")
-
 speak("Oops, I can't find your songs, can you show me where you save your songs?")
 
 from tkinter import Tk

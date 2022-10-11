@@ -5,7 +5,7 @@
    "accent": "ca",
    "defaults": {
       "text_editor": "notepad",
-      "voice_engine": "gTTS",
+      "voice_engine": "wit.ai",
       "media_player": {
          "name": "vlc",
          "cmd": "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe"
