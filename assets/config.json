@@ -2,10 +2,10 @@
    "songs_path": "D:\\Songs\\",
    "quick_connect": "enabled",
    "service_default": "website",
-   "accent": "ca",
    "defaults": {
       "text_editor": "notepad",
       "voice_engine": "wit.ai",
+      "voice":"Charlie",
       "media_player": {
          "name": "vlc",
          "cmd": "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe"
@@ -15,46 +15,6 @@
          "search_url": "https://www.google.com/maps/place/"
       }
    },
-   "accent_list": [
-      {
-         "name": "australian",
-         "alias": [
-            "australian",
-            "austraila"
-         ],
-         "tld": "com.au"
-      },
-      {
-         "name": "unitedkingdom",
-         "alias": [
-            "unitedkingdom,uk"
-         ],
-         "tld": "com.uk"
-      },
-      {
-         "name": "canadian",
-         "alias": [
-            "canadian",
-            "canada"
-         ],
-         "tld": "ca"
-      },
-      {
-         "name": "indian",
-         "alias": [
-            "indian",
-            "india"
-         ],
-         "tld": "co.in"
-      },
-      {
-         "name": "ireland",
-         "alias": [
-            "ireland"
-         ],
-         "tld": "ie"
-      }
-   ],
 
    "services": [
       {

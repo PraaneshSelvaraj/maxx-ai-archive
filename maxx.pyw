@@ -33,7 +33,6 @@ if user_config['quick_connect']=="enabled":
 
 encoding='ascii'
 buffer = 1024
-accent = user_config['accent']
 
 song_loaded = skills.load_songs()
 
@@ -72,7 +71,7 @@ def speak(txt):
             return
 
         elif user_config['defaults']['voice_engine'] == 'gTTS':
-            tts=gTTS(txt,lang='en',tld=accent)
+            tts=gTTS(txt,lang='en',tld=user_config['defaults']['voice'])
             tts.save('output.mp3')
             sleep(0.5)
             print(txt)
@@ -88,7 +87,7 @@ def speak(txt):
             headers={
                 'Authorization': 'Bearer {}'.format(keys.wit_access_token),
             },
-            json={ 'q': txt, 'voice': 'Charlie' },
+            json={ 'q': txt, 'voice': user_config['defaults']['voice'] },
             )
 
             with open("output.wav","wb") as f:
@@ -663,6 +662,13 @@ def awake():
     else:
         config.in_use = False
         return
+        
+def start_dashboard():
+    def dash_thread():
+        subprocess.run(["python","./dashboard/dashboard.py"])
+
+    dash = threading.Thread(target=dash_thread,daemon=True)
+    dash.start()
 
 #Creating System Tray Icon
 class SystemTrayApp(QtWidgets.QSystemTrayIcon):
@@ -676,6 +682,10 @@ class SystemTrayApp(QtWidgets.QSystemTrayIcon):
         awake_opt.setIcon(QtGui.QIcon("assets/images/icon.png"))
         menu.addSeparator()
 
+        dashboard_opt = menu.addAction("Dashboard")
+        dashboard_opt.triggered.connect(start_dashboard)
+        menu.addSeparator()
+        
         exit_opt = menu.addAction("Exit")
         exit_opt.triggered.connect(lambda: sys.exit())
 
