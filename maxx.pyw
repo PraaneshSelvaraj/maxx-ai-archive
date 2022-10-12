@@ -33,7 +33,6 @@ if user_config['quick_connect']=="enabled":
 
 encoding='ascii'
 buffer = 1024
-accent = user_config['accent']
 
 song_loaded = skills.load_songs()
 
@@ -88,7 +87,7 @@ def speak(txt):
             headers={
                 'Authorization': 'Bearer {}'.format(keys.wit_access_token),
             },
-            json={ 'q': txt, 'voice': 'Charlie' },
+            json={ 'q': txt, 'voice': user_config['defaults']['voice'] },
             )
 
             with open("output.wav","wb") as f:
