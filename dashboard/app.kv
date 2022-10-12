@@ -1,0 +1,87 @@
+<MainScreen>:
+    name:'main'
+    Screen:
+        MDNavigationLayout:
+            ScreenManager:
+                Screen:
+                    BoxLayout:
+                        orientation:'vertical'
+                        MDTopAppBar:
+                            id:tool_box_lbl
+                            title:'Dashboard'
+                            left_action_items:[["menu",lambda x: nav_drawer.set_state('toggle')]]
+                            elevation:10
+
+                        Widget:
+        ScreenManager:
+            id:inner_screen_manager
+            Screen:
+                name:"home"
+                BoxLayout:
+                    orientation:'vertical'
+                    
+            Screen:
+                name:"voice"
+                BoxLayout:
+                    orientation:'vertical'
+
+            Screen: 
+                name: "settings"
+                BoxLayout:
+                    orientation:'vertical'
+                    padding:'10dp'
+                    spacing:'10dp'
+                    
+                    MDLabel:
+                        text:'Settings'
+                        font_style:'H4'
+                        halign:'center'
+                        pos_hint_y:None
+                        pos_hint:{'top':1}
+
+                    BoxLayout:
+                        orientation:'horizontal'
+                        padding:'10dp'
+                        spacing:'10dp'
+                        MDLabel:
+                            text:'Dark Mode'
+                            halign:'left'
+
+                        MDSwitch:
+                            id:darkmode_switch
+                            pos_hint:{'center_x':0.5,'center_y':0.5}
+                            on_active:app.change_theme()
+
+        MDNavigationDrawer:
+            id:nav_drawer
+            BoxLayout:
+                orientation:'vertical'
+                spacing:'10dp'
+                padding:'10dp'
+
+                ScrollView:
+
+                    MDList:
+                        OneLineIconListItem:
+                            text:"Home"
+                            on_release: app.switch_inside('home')
+                            IconLeftWidget:
+                                icon:'home'
+                                on_release: app.switch_inside('home')
+
+                        OneLineIconListItem:
+                            text:"Voice Engine"
+                            on_release:app.switch_inside("voice")
+                            IconLeftWidget:
+                                icon: "speaker"
+                                on_release:app.switch_inside("voice")
+                        
+                        OneLineIconListItem:
+                            text:"Settings"
+                            on_release: app.switch_inside('settings')
+                            IconLeftWidget:
+                                icon:'cog'
+                                on_release: app.switch_inside('settings')
+
+ScreenManager:
+    MainScreen:

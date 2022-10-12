@@ -35,7 +35,7 @@ speak("I am going to move in and live with you.")
 speak("Let me pack up my things from my home server and shift them to your system.")
 
 packages =["tk","SpeechRecognition","wolframalpha","pyscreenshot","prompt_toolkit","pyaudio","wikipedia","psutil", "pyttsx3",
-           "google-api-python-client","google-auth-httplib2","google-auth-oauthlib","pywin32","pillow","gTTS","pyside2"]
+           "google-api-python-client","google-auth-httplib2","google-auth-oauthlib","pywin32","pillow","gTTS","pyside2","kivy","kivymd"]
 
 for package in packages:
     call(["pip","install",package])
