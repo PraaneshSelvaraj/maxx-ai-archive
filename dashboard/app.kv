@@ -6,14 +6,15 @@
 
     TwoLineIconListItem:
         text: "Charlie"
-        
         IconLeftWidget:
             icon: "volume-high"
+            on_press:root.voice_test('Charlie')
 
     TwoLineIconListItem:
         text: "Rebecca"
         IconLeftWidget:
             icon: "volume-high"
+            on_press:root.voice_test('Rebecca')
 
 <GttsContent>:
     orientation: "vertical"
@@ -34,6 +35,7 @@
 
         IconLeftWidget:
             icon: "email"
+            
 <MainScreen>:
     name:'main'
     Screen:

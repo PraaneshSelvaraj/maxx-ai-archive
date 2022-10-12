@@ -5,12 +5,34 @@ import json
 from kivymd.uix.expansionpanel import MDExpansionPanelOneLine, MDExpansionPanel
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
+import requests
+import winsound
+import os
 
 class MainScreen(Screen):
     pass
 
 class WitaiContent(MDBoxLayout):
-    pass
+    def voice_test(self,voice):
+        print("Voice")
+        audio= requests.post(
+        'https://api.wit.ai/synthesize',
+        params={
+            'v': '20220622',
+        },
+        headers={
+            'Authorization': 'Bearer YGLFI5TF35JA4KHYTBT75KTH3AEQOZLL',
+        },
+        json={ 'q': f"This is {voice} voice from wit a.i voice engine.", 'voice': voice },
+        )
+
+        with open("output.wav","wb") as f:
+            f.writelines(audio)
+        f.close()
+        
+        
+        winsound.PlaySound("output.wav", winsound.SND_FILENAME)
+        os.remove("output.wav")
 
 class GttsContent(MDBoxLayout):
     pass
