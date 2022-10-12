@@ -10,6 +10,9 @@ from kivymd.toast import toast
 import requests
 import winsound
 import os
+from gtts import gTTS
+from time import sleep
+from playsound import playsound
 
 class MainScreen(Screen):
     pass
@@ -37,7 +40,12 @@ class WitaiContent(MDBoxLayout):
         os.remove("output.wav")
 
 class GttsContent(MDBoxLayout):
-    pass
+    def voice_test(self,voice,voice_name):
+        tts=gTTS(f"This is {voice_name} voice from gtts voice engine",lang='en',tld=voice)
+        tts.save('output.mp3')
+        sleep(0.5)
+        playsound("output.mp3")
+        os.remove("output.mp3")
 
 class Dashboard(MDApp):
     def build(self):
@@ -63,6 +71,15 @@ class Dashboard(MDApp):
                 on_close=self.panel_close,
                 content=witaicontent,
                 panel_cls=MDExpansionPanelOneLine(text="Wit.ai"),
+            ))
+        
+        gttscontent = GttsContent()
+        self.root.get_screen('main').ids.card.add_widget(
+            MDExpansionPanel(
+                on_open=self.panel_open,
+                on_close=self.panel_close,
+                content=gttscontent,
+                panel_cls=MDExpansionPanelOneLine(text="GTTS"),
             ))
 
     def change_theme(self):
@@ -95,9 +112,9 @@ class Dashboard(MDApp):
             d=0.2,
         ).start(self.root.get_screen('main').ids.box)
 
-    def change_voice(self,engine,voice):
+    def change_voice(self,engine,voice,voice_name):
         
-        toast("Changed {} from {} engine as default voice".format(voice,engine))
+        toast("Changed {} from {} engine as default voice".format(voice_name,engine))
         with open("./assets/config.json","r") as f:
             user_config = json.load(f)
         f.close()

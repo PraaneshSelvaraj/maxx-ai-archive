@@ -71,7 +71,7 @@ def speak(txt):
             return
 
         elif user_config['defaults']['voice_engine'] == 'gTTS':
-            tts=gTTS(txt,lang='en',tld=accent)
+            tts=gTTS(txt,lang='en',tld=user_config['defaults']['voice'])
             tts.save('output.mp3')
             sleep(0.5)
             print(txt)
