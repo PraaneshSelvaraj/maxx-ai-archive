@@ -663,6 +663,13 @@ def awake():
     else:
         config.in_use = False
         return
+        
+def start_dashboard():
+    def dash_thread():
+        subprocess.run(["python","./dashboard/dashboard.py"])
+
+    dash = threading.Thread(target=dash_thread,daemon=True)
+    dash.start()
 
 #Creating System Tray Icon
 class SystemTrayApp(QtWidgets.QSystemTrayIcon):
@@ -676,6 +683,10 @@ class SystemTrayApp(QtWidgets.QSystemTrayIcon):
         awake_opt.setIcon(QtGui.QIcon("assets/images/icon.png"))
         menu.addSeparator()
 
+        dashboard_opt = menu.addAction("Dashboard")
+        dashboard_opt.triggered.connect(start_dashboard)
+        menu.addSeparator()
+        
         exit_opt = menu.addAction("Exit")
         exit_opt.triggered.connect(lambda: sys.exit())
 
