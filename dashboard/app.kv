@@ -6,12 +6,16 @@
 
     TwoLineIconListItem:
         text: "Charlie"
+        on_press:app.change_voice('wit.ai','Charlie')
+
         IconLeftWidget:
             icon: "volume-high"
             on_press:root.voice_test('Charlie')
 
     TwoLineIconListItem:
         text: "Rebecca"
+        on_press:app.change_voice('wit.ai','Rebecca')
+
         IconLeftWidget:
             icon: "volume-high"
             on_press:root.voice_test('Rebecca')

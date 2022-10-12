@@ -5,6 +5,8 @@ import json
 from kivymd.uix.expansionpanel import MDExpansionPanelOneLine, MDExpansionPanel
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
+from kivymd.uix.dialog import MDDialog
+from kivymd.toast import toast
 import requests
 import winsound
 import os
@@ -92,6 +94,23 @@ class Dashboard(MDApp):
             + self.theme_cls.standard_increment * 2,
             d=0.2,
         ).start(self.root.get_screen('main').ids.box)
+
+    def change_voice(self,engine,voice):
+        
+        toast("Changed {} from {} engine as default voice".format(voice,engine))
+        with open("./assets/config.json","r") as f:
+            user_config = json.load(f)
+        f.close()
+       
+        user_config['defaults']['voice_engine'] = engine
+        user_config['defaults']['voice'] = voice
+
+        with open("./assets/config.json","w") as f:
+            json.dump(user_config, f, indent=3)
+        f.close()
+        print("New voice : "+voice+" from "+engine)
+        
+        
 
 if __name__ == "__main__":
 	Dashboard().run()
