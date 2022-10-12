@@ -1,3 +1,39 @@
+<WitaiContent>:
+    orientation: "vertical"
+    padding: dp(10)
+    spacing: dp(10)
+    adaptive_height: True
+
+    TwoLineIconListItem:
+        text: "Charlie"
+        
+        IconLeftWidget:
+            icon: "volume-high"
+
+    TwoLineIconListItem:
+        text: "Rebecca"
+        IconLeftWidget:
+            icon: "volume-high"
+
+<GttsContent>:
+    orientation: "vertical"
+    padding: dp(10)
+    spacing: dp(10)
+    adaptive_height: True
+
+    TwoLineIconListItem:
+        text: "(050)-123-45-67"
+        
+
+        IconLeftWidget:
+            icon: "phone"
+
+    TwoLineIconListItem:
+        text: "kivydevelopment@gmail.com"
+
+
+        IconLeftWidget:
+            icon: "email"
 <MainScreen>:
     name:'main'
     Screen:
@@ -19,11 +55,26 @@
                 name:"home"
                 BoxLayout:
                     orientation:'vertical'
-                    
+                    MDLabel:
+                        text:"Welcome to Maxx-AI Dashboard."
+                        font_style:'H3'
+                        halign:'center'
             Screen:
                 name:"voice"
                 BoxLayout:
                     orientation:'vertical'
+                    MDLabel:
+                        text:"Select Engine and Voice"
+                        font_style:'H4'
+                        halign:'center'
+                    
+                    MDGridLayout:
+                        id:card
+                        cols: 3
+                        size_hint_y: None
+                        height: self.minimum_height
+                        
+                            
 
             Screen: 
                 name: "settings"
