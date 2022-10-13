@@ -670,6 +670,10 @@ def start_dashboard():
     dash = threading.Thread(target=dash_thread,daemon=True)
     dash.start()
 
+def restart_now():
+    os.startfile(sys.argv[0])
+    sys.exit()
+    
 #Creating System Tray Icon
 class SystemTrayApp(QtWidgets.QSystemTrayIcon):
     def __init__(self,icon,parent):
@@ -686,6 +690,10 @@ class SystemTrayApp(QtWidgets.QSystemTrayIcon):
         dashboard_opt.triggered.connect(start_dashboard)
         menu.addSeparator()
         
+        restart_opt = menu.addAction("Restart")
+        restart_opt.triggered.connect(restart_now)
+        menu.addSeparator()
+
         exit_opt = menu.addAction("Exit")
         exit_opt.triggered.connect(lambda: sys.exit())
 
