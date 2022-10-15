@@ -441,9 +441,12 @@ def assistant(query):
         service = get_wit.get_service(res)
         search = get_wit.get_search(res)
         
-        if not search or not service:
+        if not search:
             speak("Unable to search it")
             return
+        if not service: 
+            service = 'google'
+            
         speak("Searching")
         link = skills.website_search(service,search)
         
