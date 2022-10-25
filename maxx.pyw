@@ -508,20 +508,6 @@ def assistant(query):
                 subprocess.run([cmd])
             app=threading.Thread(target=open_serv,args=(cmd,),daemon=True)
             app.start()
-
-    elif intent == "change_accent":
-        ac = get_wit.get_accent(res)
-        if not ac:
-            speak("No accent specified")
-            return
-        tld = skills.get_tld(ac)
-        global accent
-        accent = tld
-        user_config['accent'] = tld
-        with open("./assets/config.json","w") as f:
-            json.dump(user_config,f,indent=3)
-        f.close()
-        speak("Accent changed")
     
     elif intent == "list_network_devices":
 

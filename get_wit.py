@@ -75,12 +75,6 @@ def get_network_device(res):
     except:
         return None
 
-def get_fm(res):
-    try:
-        return res['entities']['fm_channel:fm_channel'][0]['value']
-    except:
-        return None
-
 def get_accent(res):
     try:
         return res['entities']['accent:accent'][0]['value']
