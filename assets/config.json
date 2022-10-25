@@ -1,11 +1,11 @@
 {
-   "songs_path": "D:\\Songs\\",
+   "songs_path": "",
    "quick_connect": "enabled",
    "service_default": "website",
    "defaults": {
       "text_editor": "notepad",
       "voice_engine": "wit.ai",
-      "voice":"Charlie",
+      "voice": "Charlie",
       "media_player": {
          "name": "vlc",
          "cmd": "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe"
@@ -15,7 +15,6 @@
          "search_url": "https://www.google.com/maps/place/"
       }
    },
-
    "services": [
       {
          "name": "google",
@@ -106,39 +105,41 @@
             "notepad",
             "notes"
          ],
-         "url":"none",
-         "search_url":"none",
+         "url": "none",
+         "search_url": "none",
          "app": "NOTEPAD"
       },
       {
-         "name":"paint",
-         "type":"app",
-         "alias":["paint",
-         "ms paint",
-         "microsoft paint"],
-         "url":"none",
-         "search_url":"none",
-         "app":"mspaint"
+         "name": "paint",
+         "type": "app",
+         "alias": [
+            "paint",
+            "ms paint",
+            "microsoft paint"
+         ],
+         "url": "none",
+         "search_url": "none",
+         "app": "mspaint"
       },
       {
-         "name":"wordpad",
-         "type":"app",
-         "alias":[
+         "name": "wordpad",
+         "type": "app",
+         "alias": [
             "wordpad"
          ],
-         "url":"none",
-         "search_url":"none",
-         "app":"write.exe"
+         "url": "none",
+         "search_url": "none",
+         "app": "write.exe"
       },
       {
-         "name":"Calculator",
-         "type":"app",
-         "alias":[
+         "name": "Calculator",
+         "type": "app",
+         "alias": [
             "calculator"
          ],
-         "url":"none",
-         "search_url":"none",
-         "app":"calc.exe"
+         "url": "none",
+         "search_url": "none",
+         "app": "calc.exe"
       }
    ]
 }
