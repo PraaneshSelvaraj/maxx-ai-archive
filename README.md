@@ -18,7 +18,11 @@ pythonw maxx.pyw
 
 [Documentation](https://maxxai.gitbook.io/maxx-ai)
 
+## Clients
+Clients are devices that can be connected to Maxx-AI. These clients can be connected and controlled.
 
+### List of clients
+* [Android](https://github.com/PraaneshSelvaraj/maxx-ai-android-client)
 ## License
 
 [Apache-2.0 license](http://www.apache.org/licenses/LICENSE-2.0)
