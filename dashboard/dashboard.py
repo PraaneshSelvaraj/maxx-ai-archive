@@ -7,6 +7,9 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivymd.uix.dialog import MDDialog
 from kivymd.toast import toast
+from kivymd.uix.list import OneLineAvatarIconListItem, IconLeftWidget, IconRightWidget
+from kivymd.uix.dialog import MDDialog
+import urllib.request
 import requests
 import winsound
 import os
@@ -64,6 +67,17 @@ class Dashboard(MDApp):
         else:
             self.root.get_screen('main').ids.darkmode_switch.active=False
             self.theme_cls.theme_style=theme
+        with open('./assets/config.json','r') as f:
+            self.app_config = json.load(f)
+        f.close()
+        
+        for service in self.app_config['services']:
+            item = OneLineAvatarIconListItem(text=service['name'])
+            item.add_widget(IconLeftWidget(icon='pencil'))
+            item.add_widget(IconRightWidget(icon='delete'))
+            self.root.get_screen('main').ids.serivce_list.add_widget(item)
+
+        self.service_type = None
         witaicontent = WitaiContent()
         self.root.get_screen('main').ids.card.add_widget(
             MDExpansionPanel(
@@ -126,10 +140,116 @@ class Dashboard(MDApp):
             json.dump(user_config, f, indent=3)
         f.close()
         print("New voice : "+voice+" from "+engine)
-        
-        
+    
+    def check_box(self, service_type):
+        self.service_type = service_type
+        print(self.service_type)
 
+    def clear(self, field):
+        if field == 'service_name':
+            self.root.get_screen('main').ids.service_name.text = ''
+        elif field == "alias":
+            self.root.get_screen('main').ids.alias.text = ''
+        elif field == "site_url":
+            self.root.get_screen('main').ids.site_url.text = ''
+        elif field == "site_search_url":
+            self.root.get_screen('main').ids.site_search_url.text = ''
+        elif field == "application":
+            self.root.get_screen('main').ids.application.text = ''
+        
+        self.dialog.dismiss()
+
+    def create_service(self):
+        self.dialog = None
+        service_name = self.root.get_screen('main').ids.service_name.text
+        alias = self.root.get_screen('main').ids.alias.text
+        site_url = self.root.get_screen('main').ids.site_url.text
+        site_search_url = self.root.get_screen('main').ids.site_search_url.text
+        application = self.root.get_screen('main').ids.application.text
+        
+        if not service_name or not alias:
+            self.dialog = MDDialog(text="Enter all required fields",title="Error", buttons=[
+                    MDFlatButton(text="OK",
+                    on_release=lambda *args: self.clear(''),)
+                    ])
+            self.dialog.open()
+            return
+
+        invalid_characters = '~!@#$%^&*()_+{:"|}<>?`-=[];\,/.'
+
+        for char in service_name:
+            if char in invalid_characters:
+                self.dialog = MDDialog(text="Invalid Service Name",title="Error", buttons=[
+                    MDFlatButton(text="OK",
+                    on_release=lambda *args: self.clear('service_name'),)
+                    ])
+                self.dialog.open()
+                return
+                
+        for char in alias:
+            if char in invalid_characters:
+                if char ==",": continue
+                self.dialog = MDDialog(text="Invalid Alias Name",title="Error", buttons=[
+                        MDFlatButton(text="OK",
+                        on_release=lambda *args: self.clear('alias'),)
+                        ])
+                self.dialog.open()
+                return
+
+        if site_url:
+            try:
+                status_code = urllib.request.urlopen(site_url).getcode()
+            except: 
+                status_code = 404
+
+            if status_code != 200:
+                self.dialog = MDDialog(text="Invalid Site url",title="Error", buttons=[
+                            MDFlatButton(text="OK",
+                            on_release=lambda *args: self.clear('site_url'),)
+                            ])
+                self.dialog.open()
+                return
+
+        if application:
+            if not os.path.exists(application):
+                self.dialog = MDDialog(text="Invalid Application path",title="Error", buttons=[
+                            MDFlatButton(text="OK",
+                            on_release=lambda *args: self.clear('application'),)
+                            ])
+                self.dialog.open()
+                return
+        
+        if not site_url and not site_search_url and not application:
+            self.dialog = MDDialog(text="Fill alteast one among the three.",title="Error", buttons=[
+                            MDFlatButton(text="OK",
+                            on_release=lambda *args: self.clear(''),)
+                            ])
+            self.dialog.open()
+            return
+
+        if "," in alias:
+            alias = alias.split(",")
+        else: 
+            alias = [alias]
+
+        if not site_url: site_url = 'none'
+        if not site_search_url: site_search_url = 'none'
+        if not application: application = 'none'
+
+        with open("./assets/config.json","r") as f:
+            user_config = json.load(f)
+        f.close()
+        
+        new_service = {'name':service_name, 'type':self.service_type, 'alias':alias, 
+                        'url':site_url,'search_url':site_search_url, 'app':application}
+        print(new_service)
+        user_config['services'].append(new_service)
+
+        with open("./assets/config.json","w") as f:
+            json.dump(user_config, f, indent=3)
+        f.close()
+
+        toast("Added {} to Services".format(service_name))
+        
 if __name__ == "__main__":
 	Dashboard().run()
-
-
