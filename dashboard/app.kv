@@ -94,12 +94,109 @@
                         text:"Select Engine and Voice"
                         font_style:'H4'
                         halign:'center'
+
+                    ScrollView:
+                        MDList:
+                            id:card
+
+            Screen:
+                name:"service"
+                BoxLayout:
+                    orientation:'vertical'
+                    MDLabel:
+                        text:"Services" 
+                        font_style:'H3'
+                        halign:'center'
+                    
+                    MDRaisedButton:
+                        text:"Add new service"
+                        pos_hint:{'center_x':0.5,'center_y':0}
+                        on_press:app.switch_inside('newservice')
+                    ScrollView:
+                        size_hint_y:None
+                        height:root.height - (root.height * 40/100)
+                        MDList:
+                            id:serivce_list
+            
+            Screen:
+                name:"newservice"
+                BoxLayout:
+                    orientation:'vertical'
+                    spacing:'10dp'
+                    padding:'10dp'
+                    MDLabel:
+                        text:"Add new service"
+                        halign:'center'
+                        font_style:'H4'
+                        
+                    MDTextField:
+                        id:service_name
+                        hint_text:'Service name'
+                        required:True
+                        helper_text_mode:'on_focus'
+                        helper_text:'Enter the name for this service'
+                        #icon_right:'account'
+                        #icon_right_color:app.theme_cls.primary_colory
                     
                     BoxLayout:
-                        id:card
-                        orientation:'vertical'                      
-                            
+                        orientation:'horizontal'
+                        
+                        MDCheckbox:
+                            group:'type'
+                            on_press:app.check_box('website')
+                        MDLabel:
+                            text:"Website"
+                        Widget:
+                        MDCheckbox:
+                            group:'type'
+                            on_press:app.check_box('app')
+                        MDLabel:
+                            text:"Application"
+                        Widget:
+                        MDCheckbox:
+                            group:'type'
+                            on_press:app.check_box('hybrid')
+                        MDLabel:
+                            text:"Hybrid"
+                        
 
+                    MDTextField:
+                        id:alias
+                        hint_text:'Alias'
+                        required:True
+                        helper_text:'Enter alias seperated by comma'
+                        helper_text_mode:'on_focus'
+                        #icon_right:'account'
+                        #icon_right_color:app.theme_cls.primary_colory
+                    
+                    MDTextField:
+                        id:site_url
+                        hint_text:'Website URL'
+                        helper_text:'Enter the url of the service website'
+                        helper_text_mode:'on_focus'
+                        #icon_right:'account'
+                        #icon_right_color:app.theme_cls.primary_colory
+                    
+                    MDTextField:
+                        id:site_search_url
+                        hint_text:'Website Search URL'
+                        helper_text:'Enter the search url of the service website'
+                        helper_text_mode:'on_focus'
+                        #icon_right:'account'
+                        #icon_right_color:app.theme_cls.primary_colory
+
+                    MDTextField:
+                        id:application
+                        hint_text:'Application'
+                        helper_text:'Enter the path with exe of the application'
+                        helper_text_mode:'on_focus'
+                        #icon_right:'account'
+                        #icon_right_color:app.theme_cls.primary_colory
+
+                    MDRectangleFlatButton:
+                        text:'Add Service'
+                        on_release:app.create_service()
+                        pos_hint:{'center_x':0.5}
             Screen: 
                 name: "settings"
                 BoxLayout:
@@ -150,6 +247,13 @@
                             IconLeftWidget:
                                 icon: "speaker"
                                 on_release:app.switch_inside("voice")
+                        
+                        OneLineIconListItem:
+                            text:"Services"
+                            on_release:app.switch_inside('service')
+                            IconLeftWidget:
+                                icon: 'list-box'
+                                on_release: app.switch_inside("service")
                         
                         OneLineIconListItem:
                             text:"Settings"
