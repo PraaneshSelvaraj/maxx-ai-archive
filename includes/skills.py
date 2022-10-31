@@ -31,14 +31,8 @@ def note(txt):
     with open(file,"w") as f:
         f.writelines(txt)
     f.close()
-    
-    if user_config["defaults"]["text_editor"] =="gedit":
-        
-        def _open(file):
-            subprocess.run(["gedit",file])
-        x =Thread(target=_open,args=(file,),daemon=True)
-        x.start()
 
+    os.startfile(path)
     return True
 
 def screenshot():
@@ -46,6 +40,7 @@ def screenshot():
     path = f"{home}/Pictures/{time}.png"
     screenshot = pyscreenshot.grab()
     screenshot.save(path)
+    os.startfile(path)
 
 def check_battery():
     battery = psutil.sensors_battery()
@@ -57,9 +52,8 @@ def load_songs():
         for root, _, files in os.walk(songs_path):
             if files:
                 for i in files:
-                    if root[-1] =="/": t=""
-                    else: t ="/"
-                    file_index.append(root+t+i)
+                    path = os.path.join(root,i)
+                    file_index.append(path)
         
         return True
                     
@@ -136,13 +130,4 @@ def open_service(service):
                 return url, app, s['type']
 
 
-    return None
-
-def get_tld(acc):
-    acc = acc.replace(" ","")
-    for accent in user_config['accent_list']:
-        for name in accent['alias']:
-            if name == acc:
-                return accent['tld']
-    
     return None
