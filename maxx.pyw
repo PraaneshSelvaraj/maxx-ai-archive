@@ -36,7 +36,6 @@ buffer = 1024
 
 song_loaded = skills.load_songs()
 
-wit_access_token = keys.wit_access_token
 wolfram_app = wolframalpha.Client(keys.wolframalpha_app_id)
 google_service_calendar = google_con.build_service("calendar")
 google_service_people = google_con.build_service("people")
@@ -56,8 +55,12 @@ def speak(txt):
     try:
         if config.redirect:
             if config.redirect_device:
-                if config.redirect_device in nicknames and "LISTENER*"+config.redirect_device in nicknames:
-                    resp = reqnresp("speak~{}".format(txt),"LISTENER*"+config.redirect_device)
+                if config.redirect_device in nicknames:
+                    if "LISTENER*"+config.redirect_device in nicknames:
+                        device = "LISTENER*"+config.redirect_device
+                    else:
+                        device = config.redirect_device
+                    resp = reqnresp("speak~{}".format(txt),device)
                     print("RESP SPEAK: {}".format(resp))
                     if resp:
                         return
@@ -191,8 +194,9 @@ def new_conn(client, nickname, address ,hsh):
 
                 client.send("CONNECTIONACCEPTED".encode(encoding))
 
-                speak(nickname+" is online.")
                 client.send(hsh.encode(encoding))
+                speak(nickname+" is online.")
+                
                 
                 rec_thrd = threading.Thread(target=recieve_msg_client,args=(client,nickname),daemon=True)
                 rec_thrd.start()
@@ -205,9 +209,10 @@ def new_conn(client, nickname, address ,hsh):
                 devices.append(dev)
                 client.send("CONNECTIONACCEPTED".encode(encoding))
 
-                speak(nickname+" is online.")
                 hsh =hash()
                 client.send(hsh.encode(encoding))
+                speak(nickname+" is online.")
+                
                 
                 rec_thrd = threading.Thread(target=recieve_msg_client,args=(client,nickname),daemon=True)
                 rec_thrd.start()
@@ -334,7 +339,7 @@ def reqnresp(message, target):
     
 def assistant(query):
     playsound("./assets/sounds/process.mp3")
-    res = get_wit.get_res(query,keys.wit_access_token)
+    res = get_wit.get_res(query)
     print("got resp")
     intent = get_wit.get_intent(res)
      
@@ -454,6 +459,9 @@ def assistant(query):
 
             if device:
                 dev = "LISTENER*" + device
+                if dev not in nicknames:
+                    if device in nicknames: 
+                        dev = device
                 print("device = {}".format(dev))
                 msg = "WEBBROWSER~{}".format(link)
                 reqnresp(message=msg,target=dev)

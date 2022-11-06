@@ -29,7 +29,7 @@ class WitaiContent(MDBoxLayout):
             'v': '20220622',
         },
         headers={
-            'Authorization': 'Bearer YGLFI5TF35JA4KHYTBT75KTH3AEQOZLL',
+            'Authorization': 'Bearer NPKPNP3YPMP6WOWHSM6WGVITON5PNPJ6',
         },
         json={ 'q': f"This is {voice} voice from wit a.i voice engine.", 'voice': voice },
         )
@@ -67,16 +67,8 @@ class Dashboard(MDApp):
         else:
             self.root.get_screen('main').ids.darkmode_switch.active=False
             self.theme_cls.theme_style=theme
-        with open('./assets/config.json','r') as f:
-            self.app_config = json.load(f)
-        f.close()
-        
-        for service in self.app_config['services']:
-            item = OneLineAvatarIconListItem(text=service['name'])
-            item.add_widget(IconLeftWidget(icon='pencil'))
-            item.add_widget(IconRightWidget(icon='delete'))
-            self.root.get_screen('main').ids.serivce_list.add_widget(item)
 
+        self.update_service_list()
         self.service_type = None
         witaicontent = WitaiContent()
         self.root.get_screen('main').ids.card.add_widget(
@@ -159,6 +151,17 @@ class Dashboard(MDApp):
         
         self.dialog.dismiss()
 
+    def update_service_list(self):
+        with open('./assets/config.json','r') as f:
+            self.app_config = json.load(f)
+        f.close()
+        
+        for service in self.app_config['services']:
+            item = OneLineAvatarIconListItem(text=service['name'])
+            item.add_widget(IconLeftWidget(icon='pencil'))
+            item.add_widget(IconRightWidget(icon='delete'))
+            self.root.get_screen('main').ids.serivce_list.add_widget(item)
+        
     def create_service(self):
         self.dialog = None
         service_name = self.root.get_screen('main').ids.service_name.text

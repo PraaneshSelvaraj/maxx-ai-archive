@@ -1,4 +1,7 @@
 from wit import Wit
+from includes import keys
+
+client = Wit(keys.wit_access_token)
 
 def get_intent(res):
     try:
@@ -13,9 +16,8 @@ def get_intent(res):
     
     return intent
 
-def get_res(message_text, access_token):
+def get_res(message_text):
     try:
-        client = Wit(access_token)
         res = client.message(message_text)
     except:
         res=None
