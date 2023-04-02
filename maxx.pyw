@@ -20,6 +20,8 @@ import sys
 from PySide2 import QtWidgets, QtGui
 import requests
 import winsound
+import pickle
+
 engine = pyttsx3.init()
 
 
@@ -30,6 +32,12 @@ f.close()
 quick_connect = False
 if user_config['quick_connect']=="enabled":
     quick_connect = True
+cache = {}
+try:
+    with open("./assets/cache.pkl", "rb") as f:
+        cache = pickle.load(f)
+    f.close()
+except: print("Unable to load cache.")
 
 encoding='ascii'
 buffer = 1024
@@ -339,7 +347,16 @@ def reqnresp(message, target):
     
 def assistant(query):
     playsound("./assets/sounds/process.mp3")
-    res = get_wit.get_res(query)
+    if query in cache:
+        print("cached")
+        res = cache[query]
+    else:
+        res = get_wit.get_res(query)
+        cache[query] = res
+        with open("./assets/cache.pkl", "wb") as f:
+            pickle.dump(cache, f)
+        f.close()
+
     print("got resp")
     intent = get_wit.get_intent(res)
      
