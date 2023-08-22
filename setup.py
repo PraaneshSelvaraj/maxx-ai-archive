@@ -5,9 +5,16 @@ import json
 import requests
 from includes import keys
 import winsound
+import shutil
+import win32com.client
+from threading import Thread
+
 call(["pip","install","wit","playsound==1.2.2"])
 
 from playsound import playsound
+
+def run():
+    call(["pythonw","maxx.pyw"], shell=True)
 
 def speak(txt):
     audio= requests.post(
@@ -73,5 +80,14 @@ speak("Don't worry, I am not going to steal your data.")
 from includes import google_con
 google_service_calendar = google_con.build_service("calendar")
 
+startup_folder = os.path.join(os.getenv("APPDATA"), "Microsoft", "Windows", "Start Menu", "Programs", "Startup")
+shortcut_path = os.path.join(startup_folder, "Maxx-AI.lnk")
+shell = win32com.client.Dispatch("WScript.Shell")
+shortcut = shell.CreateShortCut(shortcut_path)
+shortcut.Targetpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "maxx.pyw")
+shortcut.WorkingDirectory = os.path.dirname(os.path.abspath(__file__))
+shortcut.save()
+
+Thread(target=run, daemon=True).start()
 speak("That's it, we are officially roommates.")
 speak("If you wanna talk with me, I am always waiting for you in the taskbar.")
