@@ -9,7 +9,7 @@ import shutil
 import win32com.client
 from threading import Thread
 
-call(["pip","install","wit","playsound==1.2.2"])
+call(["pip","install","wit==6.0.1","playsound==1.2.2"])
 
 from playsound import playsound
 
@@ -41,8 +41,8 @@ speak("People say that I am an A.I, But I am your bestfriend.")
 speak("I am going to move in and live with you.")
 speak("Let me pack up my things from my home server and shift them to your system.")
 
-packages =["tk","SpeechRecognition","wolframalpha","pyscreenshot","prompt_toolkit","pyaudio","wikipedia","psutil", "pyttsx3",
-           "google-api-python-client","google-auth-httplib2","google-auth-oauthlib","pywin32","pillow","gTTS","pyside2","kivy","kivymd"]
+packages =["tk==0.1.0","SpeechRecognition==3.8.1","wolframalpha==5.0.0","pyscreenshot==3.0","prompt_toolkit==3.0.28","pyaudio==0.2.12","wikipedia==1.4.0","psutil==5.9.2", "pyttsx3==2.90",
+           "google-api-python-client==2.64.0","google-auth-httplib2==0.1.0","google-auth-oauthlib==0.4.6","pywin32==304","pillow==9.2.0","gTTS==2.2.4","pyside2==5.15.2.1","kivy==2.1.0","kivymd==1.0.2"]
 
 for package in packages:
     call(["pip","install",package])
