@@ -88,6 +88,8 @@ shortcut.Targetpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "
 shortcut.WorkingDirectory = os.path.dirname(os.path.abspath(__file__))
 shortcut.save()
 
+call(['setx', 'maxxaipath', os.getcwd()])
+
 Thread(target=run, daemon=True).start()
 speak("That's it, we are officially roommates.")
 speak("If you wanna talk with me, I am always waiting for you in the taskbar.")
