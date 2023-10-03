@@ -1,3 +1,4 @@
 *.pyo
 *.pyc
 includes/token.json
+assets/cache.pkl
