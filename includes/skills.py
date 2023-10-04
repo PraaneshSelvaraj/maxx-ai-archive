@@ -62,18 +62,21 @@ def load_songs():
 
 
 def get_track(name):
-    f= file_index
-    for i in f:
-        if ".xspf" in i:
-            f.remove(i)
+    exts = ["mp3", "mp4", "mkv", "avi", "flv", "wmv", "mov", "wav", "ogg", "aac", "flac", "webm", "m4a", "ogg", "mpg", "mpeg"]
+    
+    files = []
+    for file in file_index:
+        i = file.split(".")[-1]
+        if i in exts:
+            files.append(file)
 
     if not name: return None
     
     elif name == "$random":
 
-        return random.choice(f)
+        return random.choice(files)
     else:
-        for i in f:
+        for i in files:
             song = i.split("/")[-1]
             name = name.strip()
             song = song.strip()
