@@ -3,6 +3,8 @@ import socket
 
 
 def send(filename):
+    if not filename: return None
+    
     SEPARATOR = "<SEPARATOR>"
     BUFFER_SIZE = 4096 
     host = '0.0.0.0'

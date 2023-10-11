@@ -10,6 +10,7 @@ SCOPES = ['https://www.googleapis.com/auth/calendar.readonly','https://www.googl
 
 
 def build_service(name):
+    if not name: return None
     creds = None
 
     if os.path.exists('./includes/token.json'):
