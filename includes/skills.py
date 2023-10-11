@@ -26,6 +26,7 @@ def date():
     return date
 
 def note(txt):
+    if not txt: return None
     time = str(datetime.datetime.now()).replace(":","-")
     file = home+"/Documents/"+time+"-note.txt"
     with open(file,"w") as f:
@@ -62,6 +63,7 @@ def load_songs():
 
 
 def get_track(name):
+    if not name: return None
     exts = ["mp3", "mp4", "mkv", "avi", "flv", "wmv", "mov", "wav", "ogg", "aac", "flac", "webm", "m4a", "ogg", "mpg", "mpeg"]
     
     files = []
@@ -99,6 +101,7 @@ def play_playlist(name):
 
 
 def wiki(search):
+    if not search: return None
     try:
         summary = wikipedia.summary(search,sentences=2)
         url = wikipedia.page(search).url
@@ -108,6 +111,7 @@ def wiki(search):
         return None, None
 
 def website_search(service, search):
+    if (not service) and (not search): return None
     service = service.replace(" ","")
     search = search.replace(" ","+")
 
@@ -122,6 +126,7 @@ def website_search(service, search):
     return None
 
 def open_service(service):
+    if not service: return None
     service = service.replace(" ","")
     for s in user_config['services']:
         for name in s['alias']:
