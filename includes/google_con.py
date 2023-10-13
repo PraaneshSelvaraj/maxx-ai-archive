@@ -37,18 +37,3 @@ def build_service(name):
     except HttpError as error:
         print('An error occurred: %s' % error)
 
-def get_contact_num(service,contact_name):
-    results = service.people().connections().list(resourceName='people/me',personFields='names,phoneNumbers').execute()
-
-    connections = results.get('connections', [])
-    
-    for person in connections:
-        names = person.get('names', [])
-        if names:
-            name = names[0].get('displayName')
-            if name.lower() == contact_name.lower():
-                nums = person.get('phoneNumbers',[])
-                if nums:
-                    num = nums[0].get('canonicalForm',[])
-                    return num
-
