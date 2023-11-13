@@ -11,7 +11,7 @@ import random
 import speech_recognition as sr
 import get_wit
 from time import sleep
-from includes import config, keys, skills, file_share
+from includes import config, keys, skills, file_share, toasts
 from includes import google_con 
 import json
 import wolframalpha
@@ -43,6 +43,7 @@ encoding='ascii'
 buffer = 1024
 
 song_loaded = skills.load_songs()
+toast_notifications = toasts.Toasts()
 
 wolfram_app = wolframalpha.Client(keys.wolframalpha_app_id)
 google_service_calendar = google_con.build_service("calendar")
@@ -232,9 +233,8 @@ def new_conn(client, nickname, address ,hsh):
                 client.send(hsh.encode(encoding))
 
     speak("A device named "+nickname+" wants to connect. Do you want me to connect it.")
-    inp = get_audio()
 
-    if "yes" in inp or "ok" in inp or "yeah" in inp or "connect it" in inp or "connected" in inp:
+    if toast_notifications.new_connection(nickname):
         nicknames.append(nickname)
         dev = {"name":nickname,"client":client}
         devices.append(dev)
