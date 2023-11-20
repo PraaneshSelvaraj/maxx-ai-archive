@@ -679,7 +679,7 @@ def awake():
         
 def start_dashboard():
     def dash_thread():
-        subprocess.run(["python","./dashboard/dashboard.py"])
+        subprocess.run(["./dashboard/dashboard.exe"])
 
     dash = threading.Thread(target=dash_thread,daemon=True)
     dash.start()
