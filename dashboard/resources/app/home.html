@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="assets/home_index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    />
+  </head>
+  <body>
+    <div class="home">
+      <div class="side-navigation-bar">
+        <div class="side-navigation-item-parent">
+          <div class="side-navigation-item">
+
+            <div class="home1">Home</div>
+            <img class="collection-icon" alt="" src="images/home.svg" />
+
+            <img
+              class="chevron-right-icon"
+              alt=""
+              src="images/chevron-right.svg"
+            />
+
+          </div>
+          <div class="side-navigation-item1">
+            <a href="voiceEngine.html">
+            <div class="services">Voice Engine</div>
+            <img class="collection-icon" alt="" src="images/speaker.svg" />
+
+            <img
+              class="chevron-right-icon"
+              alt=""
+              src="images/chevron-right.svg"
+            />
+            </a>
+          </div>
+          <div class="side-navigation-item1">
+            <a href="">
+            <div class="services">Services</div>
+            <img class="collection-icon" alt="" src="images/service.svg" />
+
+            <img
+              class="chevron-right-icon"
+              alt=""
+              src="images/chevron-right.svg"
+            />
+            </a>
+          </div>
+        </div>
+        <div class="side-navigation-item-group">
+            <a href="">
+          <div class="side-navigation-item3">
+            <div class="services">Settings</div>
+            <img class="collection-icon" alt="" src="images/cog.svg" />
+
+            <img
+              class="chevron-right-icon"
+              alt=""
+              src="images/chevron-right.svg"
+            />
+            </a>
+          </div>
+          <div class="side-navigation-item3">
+            <a href="">
+            <div class="services">Sign Out</div>
+            <img class="collection-icon" alt="" src="images/logout.svg" />
+
+            <img
+              class="chevron-right-icon"
+              alt=""
+              src="images/chevron-right.svg"
+            />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="home-child"></div>
+      <div class="home-item"></div>
+      <div class="song-name" id="sname">Offline</div>
+      <div class="artist-name" id="sartist"></div>
+      <div class="music-player">
+        
+        <img id="refreshBTN" class="player-heart-icon" alt="" src="images/refresh.svg" />
+
+        <div class="player-shuffle-parent">
+          <img
+            class="player-shuffle-icon"
+            alt=""
+            src="images/player-shuffle.svg"
+          />
+
+          <img
+            class="player-shuffle-icon"
+            alt=""
+            id = "prevButton"
+            src="images/player-prev.svg"
+          />
+
+          <img id="playButton" class="frame-child" alt="" src="images/pause.svg" />
+
+          <img
+            class="player-shuffle-icon"
+            alt=""
+            id = "nextButton"
+            src="images/player-next.svg"
+          />
+
+          <img
+            class="player-shuffle-icon"
+            alt=""
+            src="images/player-repeat.svg"
+          />
+        </div>
+        <img
+          id="volumeButton"
+          class="player-volume-icon"
+          alt=""
+          src="images/player-volume.svg"
+        />
+        <input 
+            type="range"
+            id="sourceSlider"
+            min="0"
+            max="100"
+            step="1"
+            class="slider"
+          />
+        <input 
+            type="range"
+            id="soundSlider"
+            min="0"
+            max="255"
+            step="1"
+            class="slider1"
+          />
+
+      </div>
+      <img class="home-inner" id="sartwork" src="images/music.svg"></img>
+      <div class="transaction-item">
+        <div class="connected-devices-wrapper">
+          <b class="connected-devices">Connected Devices</b>
+        </div>
+        <div class="div">16</div>
+      </div>
+      <div class="transaction-item1">
+        <div class="connected-devices-wrapper">
+          <b class="connected-devices">Devices Online</b>
+        </div>
+        <div class="div">12</div>
+      </div>
+      <div class="transaction-item2">
+        <b class="audio-output">Audio Output</b>
+        <div class="device_opt">Laptop</div>
+      </div>
+      <div class="devices">Devices</div>
+    </div>
+    <script src="assets/home_script.js"></script>
+  </body>
+</html>

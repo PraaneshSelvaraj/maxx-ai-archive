@@ -1,0 +1,350 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  --body-heavy: Inter;
+  --font-size-xl: 20px;
+  --body-heavy-size: 16px;
+  --white: #fff;
+  --primary: #545f71;
+  --tertiary: #eef1f4;
+  --color-gainsboro: #d9d9d9;
+  --secondary: #9ba5b7;
+  --gap-base: 16px;
+  --gap-xs: 12px;
+  --padding-xs: 12px;
+  --br-7xs: 6px;
+  --br-base: 16px;
+  --br-9xs: 4px;
+  --br-21xl: 40px;
+  --br-5xs: 8px;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.home1 {
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 64px;
+  letter-spacing: -0.02em;
+  line-height: 22px;
+  font-weight: 600;
+}
+.collection-icon {
+  position: absolute;
+  top: calc(50% - 12px);
+  left: 16px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+.chevron-right-icon {
+  position: absolute;
+  top: 16px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+}
+.side-navigation-item {
+  background-color: var(--tertiary);
+}
+.side-navigation-item,
+.side-navigation-item1 {
+  align-self: stretch;
+  position: relative;
+  border-radius: var(--br-5xs);
+  height: 52px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.services {
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 64px;
+  letter-spacing: -0.02em;
+  line-height: 22px;
+}
+.side-navigation-item-parent {
+  position: absolute;
+  width: calc(100% - 32px);
+  top: 16px;
+  right: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.side-navigation-item3 {
+  position: relative;
+  border-radius: var(--br-5xs);
+  width: 234px;
+  height: 52px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.side-navigation-item-group {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  border-top: 1px solid var(--tertiary);
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.side-navigation-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--white);
+  width: 280px;
+  height: 720px;
+  overflow: hidden;
+}
+.home-child
+{
+  position: absolute;
+  top: 16px;
+  left: 280px;
+  border-radius: var(--br-5xs);
+  background-color: var(--color-gainsboro);
+  width: 984px;
+  height: 688px;
+}
+.home-item {
+  border-radius: var(--br-5xs);
+  position: absolute;
+  top: 16px;
+  
+  left: 280px;
+  background-color: var(--color-gainsboro);
+  width: 984px;
+  height: 688px;
+}
+.home-item {
+  top: 522px;
+  left: 292px;
+  background-color: var(--secondary);
+  width: 963px;
+  height: 173px;
+}
+.artist-name,
+.song-name {
+  position: absolute;
+  left: 300px;
+  color: var(--white);
+  text-align: left;
+  display: flex;
+  align-items: flex-end;
+  width: 417px;
+  height: 24px;
+}
+.song-name {
+  top: 545px;
+  font-size: 25px;
+  font-weight: 500;
+}
+.artist-name {
+  top: 565px;
+  font-size: 14px;
+  font-weight: 300;
+}
+.player-heart-icon {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+.frame-child,
+.player-shuffle-icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.frame-child {
+  border-radius: var(--br-21xl);
+  width: 36px;
+  height: 36px;
+}
+.player-shuffle-parent {
+  position: absolute;
+  top: 8px;
+  left: calc(50% - 89.5px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-xs);
+}
+.player-volume-icon {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+
+.slider {
+  position: absolute;
+  height: 20px;
+  width: calc(100% - 31px);
+  right: 15px;
+  bottom: 10px;
+  accent-color: var(--primary);
+  left: 16px;
+}
+.frame-inner {
+  top: calc(50% - 10px);
+  right: -0.46px;
+  border-radius: var(--br-base);
+  background-color: var(--white);
+  border: 3px solid var(--primary);
+  box-sizing: border-box;
+  width: 20px;
+  display: none;
+}
+
+.slider1 {
+  position: absolute;
+  top: 15px;
+  left: 50px;
+  width: 200px;
+  height: 20px;
+  accent-color: var(--primary);
+}
+.music-player {
+  position: absolute;
+  left: 50px;
+  width: 64px;
+  height: 20px;
+  top: 616px;
+  left: 292px;
+  border-radius: var(--br-7xs);
+  background-color: var(--white);
+  border: 1px solid var(--secondary);
+  box-sizing: border-box;
+  width: 963px;
+  height: 79px;
+  overflow: hidden;
+}
+.home-inner {
+  position: absolute;
+  top: 529px;
+  left: 1160px;
+  border-radius: 50%;
+  background-color: var(--color-gainsboro);
+  width: 80px;
+  height: 80px;
+}
+.connected-devices {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 22px;
+}
+.connected-devices-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.div {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 22px;
+  text-align: right;
+}
+.transaction-item,
+.transaction-item1 {
+  border-radius: var(--br-5xs);
+  position: absolute;
+  top: 80px;
+  left: 292px;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--tertiary);
+  box-sizing: border-box;
+  width: 290px;
+  height: 76px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-xs);
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-base);
+}
+.transaction-item1 {
+  left: 594px;
+}
+.audio-output {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 22px;
+  width: 220px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.audio-output,
+.device_opt,
+.transaction-item2 {
+  display: flex;
+  align-items: center;
+}
+.device_opt {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 22px;
+  text-align: right;
+  width: 207px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.transaction-item2 {
+  position: absolute;
+  border-radius: var(--br-5xs);
+  top: 80px;
+  left: 896px;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--tertiary);
+  box-sizing: border-box;
+  width: 350px;
+  height: 76px;
+  overflow: hidden;
+  flex-direction: row;
+  padding: var(--padding-xs);
+  justify-content: flex-start;
+  gap: var(--gap-base);
+}
+.devices {
+  position: absolute;
+  top: 51px;
+  left: 292px;
+  font-size: var(--font-size-xl);
+  letter-spacing: -0.02em;
+  line-height: 22px;
+  font-weight: 800;
+}
+.home {
+  position: relative;
+  background-color: var(--white);
+  width: 100%;
+  height: 720px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--body-heavy-size);
+  color: var(--primary);
+  font-family: var(--body-heavy);
+}

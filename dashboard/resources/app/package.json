@@ -1,0 +1,21 @@
+{
+  "name": "Maxx-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build" : "electron-packager ."
+  },
+  "keywords": [],
+  "author": "Praanesh",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^26.1.0"
+  },
+  "dependencies": {
+    "electron-packager": "^17.1.2",
+    "gtts": "^0.2.1",
+    "node-fetch": "^3.3.2"
+  }
+}
